@@ -9,14 +9,28 @@
 import UIKit
 
 class AddToDoViewController: UIViewController {
+    
+    var toDoTableViewController: ToDoTableViewController?=nil
 
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var prioritySegment: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func addTapped(_ sender: Any) {
+        let newToDo = ToDo()
+        newToDo.priority = prioritySegment.selectedSegmentIndex
+        if let name = nameTextField.text {
+            newToDo.name = name
+        }
+        toDoTableViewController?.toDos.append(newToDo)
+        toDoTableViewController?.tableView.reloadData()
+        navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

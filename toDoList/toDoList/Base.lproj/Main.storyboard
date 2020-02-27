@@ -51,13 +51,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVg-MH-tjV">
-                                <rect key="frame" x="10" y="504" width="394" height="21"/>
+                                <rect key="frame" x="10" y="304" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Cn-Jx-Lt8">
-                                <rect key="frame" x="10" y="557" width="394" height="32"/>
+                                <rect key="frame" x="10" y="357" width="394" height="32"/>
                                 <segments>
                                     <segment title="None"/>
                                     <segment title="!"/>
@@ -65,11 +65,14 @@
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iq-yH-dVY">
-                                <rect key="frame" x="10" y="637" width="394" height="30"/>
+                                <rect key="frame" x="10" y="437" width="394" height="30"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addTapped:" destination="NLB-XP-5SQ" eventType="touchUpInside" id="qxi-Hh-qEJ"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Describe item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pit-P2-11R">
-                                <rect key="frame" x="10" y="388" width="394" height="34"/>
+                                <rect key="frame" x="10" y="188" width="394" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -81,10 +84,10 @@
                             <constraint firstItem="N01-d8-y8M" firstAttribute="trailing" secondItem="Pit-P2-11R" secondAttribute="trailing" constant="10" id="8Vj-tF-u79"/>
                             <constraint firstItem="Pit-P2-11R" firstAttribute="leading" secondItem="N01-d8-y8M" secondAttribute="leading" constant="10" id="B82-qo-VZT"/>
                             <constraint firstItem="aVg-MH-tjV" firstAttribute="top" secondItem="Pit-P2-11R" secondAttribute="bottom" constant="82" id="D2u-Jn-1eU"/>
-                            <constraint firstItem="Pit-P2-11R" firstAttribute="top" secondItem="N01-d8-y8M" secondAttribute="top" constant="300" id="DZe-WM-tCi"/>
                             <constraint firstItem="N01-d8-y8M" firstAttribute="trailing" secondItem="aVg-MH-tjV" secondAttribute="trailing" constant="10" id="Jhm-tl-qBU"/>
                             <constraint firstItem="N01-d8-y8M" firstAttribute="trailing" secondItem="2Cn-Jx-Lt8" secondAttribute="trailing" constant="10" id="RNP-6w-9jH"/>
                             <constraint firstItem="2Cn-Jx-Lt8" firstAttribute="top" secondItem="aVg-MH-tjV" secondAttribute="bottom" constant="32" id="XFT-s1-GFW"/>
+                            <constraint firstItem="Pit-P2-11R" firstAttribute="top" secondItem="N01-d8-y8M" secondAttribute="top" constant="100" id="kBJ-qT-tbK"/>
                             <constraint firstItem="6iq-yH-dVY" firstAttribute="leading" secondItem="N01-d8-y8M" secondAttribute="leading" constant="10" id="sMw-o7-cAT"/>
                             <constraint firstItem="2Cn-Jx-Lt8" firstAttribute="leading" secondItem="N01-d8-y8M" secondAttribute="leading" constant="10" id="tXe-KB-sEH"/>
                             <constraint firstItem="6iq-yH-dVY" firstAttribute="top" secondItem="2Cn-Jx-Lt8" secondAttribute="bottom" constant="49" id="xDo-Oq-Ocw"/>
@@ -92,6 +95,10 @@
                         <viewLayoutGuide key="safeArea" id="N01-d8-y8M"/>
                     </view>
                     <navigationItem key="navigationItem" id="O1l-pp-zZg"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="Pit-P2-11R" id="8gB-j1-rwY"/>
+                        <outlet property="prioritySegment" destination="2Cn-Jx-Lt8" id="nP2-ax-VWy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q2L-mp-OK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
