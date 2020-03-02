@@ -48,6 +48,11 @@ class ToDoTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedToDo = toDos[indexPath.row]
+        performSegue(withIdentifier: "moveToDetails", sender: selectedToDo)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -90,6 +95,12 @@ class ToDoTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let addToDoViewController = segue.destination as? AddToDoViewController {
             addToDoViewController.toDoTableViewController = self
+        }
+        
+        if let detailsToDoViewController = segue.destination as? ToDoDetailsViewController{
+            if let selectedToDo = sender as? ToDo{
+                detailsToDoViewController.toDo = selectedToDo
+            }
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
