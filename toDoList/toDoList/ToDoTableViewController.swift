@@ -10,47 +10,57 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
     
-    var toDos: [ToDo] = []
+    var toDoCDs: [ToDoCD] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //create dummy tasks
-        let toDo1 = ToDo()
-        toDo1.name = "Write chapter one of iOS 13 book"
-        toDo1.priority = 0
-        let toDo2 = ToDo()
-        toDo2.name = "Edit iOS 13 book"
-        toDo2.priority = 1
-        
-        toDos = [toDo1,toDo2] //fills up the array
     }
 
     // MARK: - Table view data source
 
+    func getToDos() {
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            if let toDosFromCoreData = try? context.fetch(ToDoCD.fetchRequest()) {
+                if let toDos = toDosFromCoreData as? [ToDoCD] {
+                    toDoCDs = toDos
+                    tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated:Bool) {
+        getToDos()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toDos.count
+        return toDoCDs.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let selectedToDo = toDos[indexPath.row]
+        let selectedToDo = toDoCDs[indexPath.row]
         
         if selectedToDo.priority == 1 {
-            cell.textLabel?.text = "!" + selectedToDo.name
+            if let name = selectedToDo.name {
+                cell.textLabel?.text = "!" + name
+            }
         }
         else if selectedToDo.priority == 2 {
-            cell.textLabel?.text = "!!" + selectedToDo.name
+            if let name = selectedToDo.name {
+                cell.textLabel?.text = "!!" + name
+            }
         }
         else {
-            cell.textLabel?.text = selectedToDo.name
-        }
+            if let name = selectedToDo.name {
+                cell.textLabel?.text = name
+            }        }
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedToDo = toDos[indexPath.row]
+        let selectedToDo = toDoCDs[indexPath.row]
         performSegue(withIdentifier: "moveToDetails", sender: selectedToDo)
     }
 
@@ -98,8 +108,8 @@ class ToDoTableViewController: UITableViewController {
         }
         
         if let detailsToDoViewController = segue.destination as? ToDoDetailsViewController{
-            if let selectedToDo = sender as? ToDo{
-                detailsToDoViewController.toDo = selectedToDo
+            if let selectedToDo = sender as? ToDoCD{
+                detailsToDoViewController.toDoCD = selectedToDo
             }
         }
         // Get the new view controller using segue.destination.

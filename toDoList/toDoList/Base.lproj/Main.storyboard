@@ -55,7 +55,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JO-SE-TPA">
                                 <rect key="frame" x="10" y="404" width="394" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Delete"/>
                                 <connections>
                                     <action selector="doneTapped:" destination="hYn-Hv-FZh" eventType="touchUpInside" id="OXr-LN-z0k"/>
                                 </connections>
