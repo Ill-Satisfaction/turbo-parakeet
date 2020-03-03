@@ -56,9 +56,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             URLSession.shared.dataTask(with: url) {(data, response, error) in
                 if let data = data {
                     if let json = try? JSONSerialization.jsonObject(with: data, options:[]) as? [String:Double] {
+                        
+                        // runs code in main thread
                         DispatchQueue.main.async {
                             if let price = json[ccy] {
-                                self.price.text = "\(price)"
+                                
+                                // number formatter
+                                let formatter = NumberFormatter()
+                                formatter.currencyCode = ccy
+                                formatter.numberStyle = .currency
+                                let formattedPrice = formatter.string(from: NSNumber(value:price))
+                                    self.price.text = formattedPrice
                             }
                         }
                     }
