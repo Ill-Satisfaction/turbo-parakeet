@@ -26,6 +26,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.picker.dataSource = self
     }
 
+    @IBAction func updatePressed(_ sender: Any) {
+        getPrice(crpCcy: crpCcy[picker.selectedRow(inComponent: 0)], ccy: ccy[picker.selectedRow(inComponent: 1)])
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -50,7 +54,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         getPrice(crpCcy: crpCcy[picker.selectedRow(inComponent: 0)], ccy: ccy[picker.selectedRow(inComponent: 1)])
     }
     
-    //  gets price from an API
+    //  gets price from an API and display it
     func getPrice(crpCcy: String, ccy: String) {
         if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=" + crpCcy + "&tsyms=" + ccy) {
             URLSession.shared.dataTask(with: url) {(data, response, error) in

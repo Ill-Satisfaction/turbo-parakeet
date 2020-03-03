@@ -37,15 +37,25 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMe-xu-8wd">
+                                <rect key="frame" x="10" y="771" width="394" height="30"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="updatePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DTJ-Cb-GbC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="tHg-0Q-iCE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="12F-WY-s3D"/>
                             <constraint firstItem="cMl-tY-RfV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="2fV-Bi-kBT"/>
                             <constraint firstItem="cMl-tY-RfV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="56A-gR-nRc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fMe-xu-8wd" secondAttribute="trailing" constant="10" id="AUt-z7-wdN"/>
+                            <constraint firstItem="fMe-xu-8wd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="JE5-PF-MKv"/>
                             <constraint firstItem="ZyT-2T-WSq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="10" id="VpT-pf-4zb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cMl-tY-RfV" secondAttribute="trailing" constant="10" id="b9t-Z0-lQA"/>
                             <constraint firstItem="tHg-0Q-iCE" firstAttribute="top" secondItem="ZyT-2T-WSq" secondAttribute="bottom" constant="75" id="ce3-cb-1nv"/>
+                            <constraint firstItem="fMe-xu-8wd" firstAttribute="top" secondItem="tHg-0Q-iCE" secondAttribute="bottom" constant="181" id="iSd-vg-Xc8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tHg-0Q-iCE" secondAttribute="trailing" constant="10" id="kmo-do-GZr"/>
                             <constraint firstItem="ZyT-2T-WSq" firstAttribute="top" secondItem="cMl-tY-RfV" secondAttribute="bottom" constant="81" id="vJQ-AQ-7my"/>
                             <constraint firstItem="ZyT-2T-WSq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="z6q-G8-QV4"/>
