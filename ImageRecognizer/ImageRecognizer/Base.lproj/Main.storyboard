@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageRecognizer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qkK-Po-DTw">
+                                <rect key="frame" x="10" y="222" width="394" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eow-46-TfL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="sIj-S4-rBC">
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="organize" id="WpJ-cL-IUa">
+                                                <connections>
+                                                    <action selector="albumTapped:" destination="BYZ-38-t0r" id="Veg-iO-jyF"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem systemItem="camera" id="ehU-LX-xPA">
+                                                <connections>
+                                                    <action selector="photoTapped:" destination="BYZ-38-t0r" id="JyH-QN-P6r"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eow-46-TfL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IQf-CH-m6z"/>
+                            <constraint firstItem="eow-46-TfL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hQL-nE-2pj"/>
+                            <constraint firstItem="eow-46-TfL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kOm-31-vll"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="qkK-Po-DTw" id="cGs-zo-zlI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133" y="139"/>
+        </scene>
+    </scenes>
+</document>
