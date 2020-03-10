@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             imageView.image = image
             classifyPicture(image:image)
@@ -45,20 +46,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func classifyPicture (image: UIImage) {
-        if let model = try? VNCoreMLModel (for: resnetModel.model) {
-            let request = VNCoreMLRequest(model:model) { (request,error) in
-                if let results = request.results as? [VNClassificationObservation] {
-                    print(results)
+        
+        if let model = try? VNCoreMLModel (for: resnetModel.model){
+            let request = VNCoreMLRequest(model: model){request,error in
+                if let results = request.results as? [VNClassificationObservation]{
+                    let result = results[0]
+                    self.navBar.topItem?.title = result.identifier
                 }
+            }
                 
-                if let imageData = image.jpegData(compressionQuality: 1.0) {
-                    let handler = VNImageRequestHandler(data:imageData,options:[:])
-                    try? handler.perform([request])
-                }
+            if let imageData = image.jpegData(compressionQuality: 1.0) {
+                let handler = VNImageRequestHandler(data:imageData,options:[:])
+                try? handler.perform([request])
             }
         }
     }
-
-
+    
 }
 
